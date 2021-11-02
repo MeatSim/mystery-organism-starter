@@ -13,7 +13,16 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
+let specimenCounter = 0;
 
+const pAequorFactory = () => {
+  let specimen = {
+    specimenNum: specimenCounter,
+    dna: mockUpStrand(),
+  }
+  specimenCounter++;
+  return specimen
+}
 
 
 
