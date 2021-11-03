@@ -46,18 +46,22 @@ const pAequorFactory = () => {
     compareDNA: function (otherPAequor) {
       let inCommon = 0;
       //iterate through 15 bases
-      for (i = 0; i < 15; i++) {
+      for (let i = 0; i < 15; i++) {
         //compare bases
         if (otherPAequor.dna[i] === this.dna[i]) {
           inCommon++;
         }
       }
-      console.log(`Specimen #${otherPAequor.specimenNum} and specimen #${this.specimenNum} have ${Math.round((inCommon / 15) * 100)}% DNA in common`)
+      const percentageInCommon = Math.round((inCommon / 15) * 100);
+
+      console.log(`Specimen #${otherPAequor.specimenNum} and specimen #${this.specimenNum} have ${percentageInCommon}% DNA in common`);
+
+      return percentageInCommon;
     },
 
     willLikelySurvive: function () {
       let cAndGCount = 0;
-      for (i = 0; i < 15; i++) {
+      for (let i = 0; i < 15; i++) {
         if (this.dna[i] === 'C' || this.dna[i] === 'G') {
           cAndGCount++;
         }
@@ -70,7 +74,7 @@ const pAequorFactory = () => {
       complementaryDna = [];
 
       //iterate through dna
-      for (i = 0; i < this.dna.length; i++) {
+      for (let i = 0; i < this.dna.length; i++) {
         switch (this.dna[i]) {
           case 'A':
             complementaryDna.push('T');
@@ -105,7 +109,7 @@ while (storage.length < 30) {
 console.log(storage);
 
 //test first five orgs
-for (i = 0; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
   console.log(storage[i])
 }
 
@@ -119,3 +123,19 @@ storage[1].compareDNA(storage[2]);
 
 //test complementStrand()
 console.log(storage[0].complementStrand())
+
+//find most related instances of pAequor
+let highestPercentage = 0;
+let mostRelated = [];
+
+for (let i = 0; i < (storage.length / 2); i++) {
+  for (let j = i + 1; j < storage.length; j++) {
+    let comparedPercentage = storage[i].compareDNA(storage[j]);
+    if (comparedPercentage > highestPercentage) {
+      highestPercentage = comparedPercentage;
+      mostRelated = [storage[i].specimenNum, storage[j].specimenNum];
+    }
+  }
+}
+
+console.log(`The most related instances of pAequor are ${mostRelated[0]} and ${mostRelated[1]} with ${highestPercentage}% DNA in common.`)
