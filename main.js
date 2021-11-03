@@ -19,6 +19,32 @@ const pAequorFactory = () => {
   let specimen = {
     specimenNum: specimenCounter,
     dna: mockUpStrand(),
+    mutate: function () {
+      //select random base
+      let randomIndex = Math.floor(Math.random() * 15);
+      //change to random different base
+      //option A:
+      //switch, case
+      switch (this.dna[randomIndex]) {
+        case 'A':
+          this.dna[randomIndex] = ['T', 'C', 'G'][Math.floor(Math.random() * 3)];
+          break
+        case 'T':
+          this.dna[randomIndex] = ['A', 'C', 'G'][Math.floor(Math.random() * 3)];
+          break
+        case 'C':
+          this.dna[randomIndex] = ['A', 'T', 'G'][Math.floor(Math.random() * 3)];
+          break
+        case 'G':
+          this.dna[randomIndex] = ['A', 'T', 'C'][Math.floor(Math.random() * 3)];
+          break
+
+      }
+      //option B:
+      //iterate through list, delete, then random from remaining 
+      //return mutated dna
+      return this.dna;
+    }
   }
   specimenCounter++;
   return specimen
