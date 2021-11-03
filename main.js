@@ -76,9 +76,14 @@ let storage = [];
 
 while (storage.length < 30) {
   let temp = pAequorFactory();
-  if (temp.willLikelySurvive === true) {
+  if (temp.willLikelySurvive() === true) {
     storage.push(temp);
   }
 }
 
 console.log(storage);
+
+//test first five orgs
+for (i = 0; i < 5; i++) {
+  console.log(storage[i])
+}
