@@ -24,8 +24,6 @@ const pAequorFactory = () => {
       //select random base
       let randomIndex = Math.floor(Math.random() * 15);
       //change to random different base
-      //option A:
-      //switch, case
       switch (this.dna[randomIndex]) {
         case 'A':
           this.dna[randomIndex] = ['T', 'C', 'G'][Math.floor(Math.random() * 3)];
@@ -39,18 +37,17 @@ const pAequorFactory = () => {
         case 'G':
           this.dna[randomIndex] = ['A', 'T', 'C'][Math.floor(Math.random() * 3)];
           break
-
       }
-      //option B:
-      //iterate through list, delete, then random from remaining 
+
       //return mutated dna
       return this.dna;
     },
 
     compareDNA: function (otherPAequor) {
       let inCommon = 0;
-      //iterate i through 15
+      //iterate through 15 bases
       for (i = 0; i < 15; i++) {
+        //compare bases
         if (otherPAequor.dna[i] === this.dna[i]) {
           inCommon++;
         }
