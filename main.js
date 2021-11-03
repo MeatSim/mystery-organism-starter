@@ -19,6 +19,7 @@ const pAequorFactory = () => {
   let specimen = {
     specimenNum: specimenCounter,
     dna: mockUpStrand(),
+
     mutate: function () {
       //select random base
       let randomIndex = Math.floor(Math.random() * 15);
@@ -44,14 +45,20 @@ const pAequorFactory = () => {
       //iterate through list, delete, then random from remaining 
       //return mutated dna
       return this.dna;
+    },
+
+    compareDNA: function (otherPAequor) {
+      let inCommon = 0;
+      //iterate i through 15
+      for (i = 0; i < 15; i++) {
+        if (otherPAequor[i] === this[i]) {
+          inCommon++;
+        }
+      }
+      console.log(`Specimen #${otherPAequor.specimenNum} and specimen #${this.specimenNum} have ${Math.round((inCommon / 15) * 100)}% DNA in common`)
     }
   }
   specimenCounter++;
   return specimen
-}
-
-
-
-
-
+};
 
