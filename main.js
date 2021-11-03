@@ -51,11 +51,21 @@ const pAequorFactory = () => {
       let inCommon = 0;
       //iterate i through 15
       for (i = 0; i < 15; i++) {
-        if (otherPAequor[i] === this[i]) {
+        if (otherPAequor.dna[i] === this.dna[i]) {
           inCommon++;
         }
       }
       console.log(`Specimen #${otherPAequor.specimenNum} and specimen #${this.specimenNum} have ${Math.round((inCommon / 15) * 100)}% DNA in common`)
+    },
+
+    willLikelySurvive: function () {
+      let cAndGCount = 0;
+      for (i = 0; i < 15; i++) {
+        if (this.dna[i] === 'C' || this.dna[i] === 'G') {
+          cAndGCount++;
+        }
+      }
+      return (cAndGCount > 8)
     }
   }
   specimenCounter++;
