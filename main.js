@@ -87,3 +87,11 @@ console.log(storage);
 for (i = 0; i < 5; i++) {
   console.log(storage[i])
 }
+
+//test mutate()
+console.log(storage[0].dna);
+storage[0].mutate();
+console.log(storage[0].dna);
+
+//test compareDNA()
+storage[1].compareDNA(storage[2]);
