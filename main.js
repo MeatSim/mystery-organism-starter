@@ -72,3 +72,13 @@ const pAequorFactory = () => {
   return specimen
 };
 
+let storage = [];
+
+while (storage.length < 30) {
+  let temp = pAequorFactory();
+  if (temp.willLikelySurvive === true) {
+    storage.push(temp);
+  }
+}
+
+console.log(storage);
