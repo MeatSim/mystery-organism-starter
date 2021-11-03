@@ -63,6 +63,30 @@ const pAequorFactory = () => {
         }
       }
       return (cAndGCount > 8)
+    },
+
+    complementStrand() {
+      //initialize complementary DNA strand
+      complementaryDna = [];
+
+      //iterate through dna
+      for (i = 0; i < this.dna.length; i++) {
+        switch (this.dna[i]) {
+          case 'A':
+            complementaryDna.push('T');
+            break
+          case 'T':
+            complementaryDna.push('A');
+            break
+          case 'C':
+            complementaryDna.push('G');
+            break
+          case 'G':
+            complementaryDna.push('C');
+            break
+        }
+      }
+      return complementaryDna;
     }
   }
   specimenCounter++;
@@ -92,3 +116,6 @@ console.log(storage[0].dna);
 
 //test compareDNA()
 storage[1].compareDNA(storage[2]);
+
+//test complementStrand()
+console.log(storage[0].complementStrand())
