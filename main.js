@@ -128,7 +128,7 @@ console.log(storage[0].complementStrand())
 let highestPercentage = 0;
 let mostRelated = [];
 
-for (let i = 0; i < (storage.length / 2); i++) {
+for (let i = 0; i < storage.length; i++) {
   for (let j = i + 1; j < storage.length; j++) {
     let comparedPercentage = storage[i].compareDNA(storage[j]);
     if (comparedPercentage > highestPercentage) {
